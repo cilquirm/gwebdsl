@@ -1,0 +1,28 @@
+apply plugin: "java"
+apply plugin: "groovy"
+apply plugin: "java"
+apply plugin: "groovy"
+apply plugin: "eclipse"
+apply plugin:"templates"
+
+
+repositories { 
+  mavenCentral()
+  mavenLocal()
+  mavenRepo urls: [ "http://download.java.net/maven/2",
+	  				"http://m2repo.spockframework.org/releases",
+					  "http://m2repo.spockframework.org/snapshots",
+					  "http://repository.codehaus.org",
+					  "http://snapshots.repository.codehaus.org" ]
+}
+
+dependencies {
+  groovy 'org.codehaus.groovy:groovy-all:1.8.0'
+  testCompile('org.codehaus.groovy.modules.http-builder:http-builder:0.5.1') {
+	  exclude group:'org.codehaus.groovy', module:'groovy' 
+  }
+  testCompile 'org.spockframework:spock-core:0.6-groovy-1.8-SNAPSHOT'
+  testCompile 'org.eclipse.jetty:jetty-server:7.4.2.v20110526'
+  testCompile 'org.eclipse.jetty:jetty-servlet:7.4.2.v20110526'
+  testCompile 'junit:junit:4.8.2'
+}
